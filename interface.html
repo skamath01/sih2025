@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .chat-container {
+
+        min-width: 40vw;
+        min-height: 66vh;
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-header {
+        background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+        color: #fff;
+        padding: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .chat-body {
+        flex: 1;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+        background: #f3f4f6;
+      }
+
+      .message {
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 12px;
+        line-height: 1.4;
+        font-size: 14px;
+      }
+
+      .user-msg {
+        align-self: flex-end;
+        background: #e0e7ff;
+        color: #1e3a8a;
+      }
+
+      .bot-msg {
+        align-self: flex-start;
+        background: #8b5cf6;
+        color: #fff;
+      }
+
+      .chat-footer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        background: #fff;
+        border-top: 1px solid #ddd;
+      }
+
+      .chat-footer input[type="text"] {
+        flex: 1;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 10px 15px;
+        font-size: 15px;
+        outline: none;
+        background: #f9fafb;
+      }
+
+      .ask-btn {
+        padding: 0 18px;
+        height: 42px;
+        border-radius: 20px;
+        background: #4f46e5;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        margin-left: 2px;
+        transition: background 0.2s;
+      }
+
+      .ask-btn:hover {
+        background: #4338ca;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <span class="text-white font-bold text-lg Assistant">🧠</span>
+        NMI Assistant
+      </div>
+
+      <div class="chat-body" id="chatBody">
+        <div class="bot-msg message">
+          Ask me anything about India's knowledge and heritage
+        </div>
+      </div>
+
+      <div class="chat-footer">
+  <i class="fa-solid fa-paperclip"></i>
+  <input 
+    type="text"
+    id="userInput"
+    placeholder="Ask your question in any language..."
+  />
+  <i class="fa-solid fa-microphone"></i>
+  <button class="ask-btn">Ask NMI</button>
+  <input type="file" id="fileInput" style="display: none;" />
+</div>
+
+
+    <script>
+      function sendMessage() {
+        const input = document.getElementById("userInput");
+        const chatBody = document.getElementById("chatBody");
+        const userText = input.value.trim();
+        if (userText === "") return;
+
+        // Add user message
+        const userMsg = document.createElement("div");
+        userMsg.className = "message user-msg";
+        userMsg.innerText = userText;
+        chatBody.appendChild(userMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        input.value = "";
+
+        // Simulate bot reply
+        setTimeout(() => {
+          const botMsg = document.createElement("div");
+          botMsg.className = "message bot-msg";
+          botMsg.innerText = "Demo response for : " + userText;
+          chatBody.appendChild(botMsg);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 800);
+      }
+      document
+        .getElementById("userInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") sendMessage();
+        });
+    </script>
+  </body>
+</html>

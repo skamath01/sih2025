@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>National Memory Infrastructure - India's Digital Brain</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
+            >
+              <span class="text-white font-bold text-lg">🧠</span>
+            </div>
+            <span class="text-xl font-bold text-gray-800">NMI</span>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              >Home</a
+            >
+            <a
+              href="#features"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              >Features</a
+            >
+            <a
+              href="#impact"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              >Impact</a
+            >
+            <a
+              href="#demo"
+              class="text-gray-700 hover:text-blue-600 transition-colors"
+              >Demo</a
+            >
+          </div>
+          <div class="flex items-center space-x-3">
+            <a href="interface.html">
+              <button
+                class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              >
+                Get Started
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Overlay -->
+
+    <div
+      class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center hidden z-50 videoOverlay"
+    >
+      <div class="relative w-full max-w-3xl">
+        <button
+          id="closeBtn"
+          class="absolute top-2 right-2 text-white text-3xl font-bold close-btn z-50"
+        >
+          ✖
+        </button>
+        <video
+          class="rounded-xl shadow-lg w-full z-40"
+          controls
+          autoplay
+          muted
+          loop
+        >
+          <source src="video/NMI.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="gradient-bg hero-pattern min-h-screen flex items-center pt-16"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="text-dark">
+            <h1 class="text-5xl lg:text-6xl font-bold mb-6 slide-in stagger-1">
+              India's Digital
+              <span
+                class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+              >
+                Brain
+              </span>
+            </h1>
+            <p class="text-xl mb-8 text-blue-400 slide-in stagger-2">
+              National Memory Infrastructure - Preserving India's vast digital
+              heritage with AI-powered accessibility in every language for every
+              citizen.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 slide-in stagger-3">
+              <button
+                class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg shadow hover:bg-gray-50 transition"
+              >
+                Explore the Memory
+              </button>
+              <button
+                id="openVideoBtn"
+                class="px-6 py-3 bg-purple-600 text-white font-medium rounded-lg shadow hover:bg-purple-700 transition demo-btn"
+              >
+                Watch Demo
+              </button>
+            </div>
+          </div>
+          <div class="relative slide-in stagger-4">
+            <div class="floating">
+              <div
+                class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20"
+              >
+                <div class="text-center mb-6">
+                  <div
+                    class="w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl"
+                  >
+                    🇮🇳
+                  </div>
+                  <h3 class="text-dark text-xl font-semibold">
+                    Ask in Any Language
+                  </h3>
+                </div>
+                <div class="space-y-3">
+                  <div
+                    class="bg-white/20 rounded-lg p-3 text-dark text-sm text-center"
+                  >
+                    "भारत का संविधान कब बना?" 📜
+                  </div>
+                  <div
+                    class="bg-white/20 rounded-lg p-3 text-dark text-sm text-center"
+                  >
+                    "ভাৰতৰ স্বাধীনতা সংগ্ৰামৰ ইতিহাস" 🗽
+                  </div>
+                  <div
+                    class="bg-white/20 rounded-lg p-3 text-dark text-sm text-center"
+                  >
+                    "தமிழ் இலக்கியத்தின் வரலாறு" 📚
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="py-20 bg-red-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">
+            The Crisis We Face
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            India generates massive digital data daily, but most of it is
+            scattered or lost forever
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border-l-4 border-red-500"
+          >
+            <div class="text-4xl mb-4">📊</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Scientific Research
+            </h3>
+            <p class="text-gray-600">
+              Valuable research data scattered across institutions, often
+              inaccessible to future generations
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border-l-4 border-orange-500"
+          >
+            <div class="text-4xl mb-4">⚖️</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Legal Records
+            </h3>
+            <p class="text-gray-600">
+              Critical legal documents and precedents lost in bureaucratic silos
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-xl p-8 shadow-lg border-l-4 border-yellow-500"
+          >
+            <div class="text-4xl mb-4">🏛️</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Cultural Heritage
+            </h3>
+            <p class="text-gray-600">
+              Rich cultural artifacts and traditions disappearing without proper
+              digital preservation
+            </p>
+          </div>
+        </div>
+        <div class="text-center mt-12">
+          <div
+            class="bg-red-100 border border-red-300 rounded-lg p-6 max-w-2xl mx-auto"
+          >
+            <h3 class="text-2xl font-bold text-red-800 mb-2">
+              ⚠️ Digital Amnesia Alert
+            </h3>
+            <p class="text-red-700">
+              Without immediate action, we risk erasing centuries of progress
+              and knowledge
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section id="features" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">
+            Our Solution: NMI
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            A sovereign, AI-powered digital brain that preserves India's memory
+            forever
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">
+              🧠 Intelligent Memory System
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-blue-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">
+                    AI-Powered Organization
+                  </h4>
+                  <p class="text-gray-600">
+                    Automatically categorizes and connects related information
+                    across domains
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-blue-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">
+                    Sovereign Infrastructure
+                  </h4>
+                  <p class="text-gray-600">
+                    Completely owned and controlled by India, ensuring data
+                    sovereignty
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-blue-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">
+                    Permanent Preservation
+                  </h4>
+                  <p class="text-gray-600">
+                    Advanced redundancy ensures no data is ever lost
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8"
+          >
+            <div class="text-center">
+              <div
+                class="w-32 h-32 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center text-5xl"
+              >
+                🧠
+              </div>
+              <h4 class="text-xl font-semibold text-gray-800 mb-2">
+                National Memory Infrastructure
+              </h4>
+              <p class="text-gray-600">India's Digital Brain</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div
+            class="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 order-2 lg:order-1"
+          >
+            <div class="space-y-4">
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                  <span class="text-2xl">🗣️</span>
+                  <span class="font-semibold">Hindi</span>
+                </div>
+                <p class="text-sm text-gray-600">
+                  "मुझे भारत के स्वतंत्रता संग्राम के बारे में बताएं"
+                </p>
+              </div>
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                  <span class="text-2xl">🗣️</span>
+                  <span class="font-semibold">Tamil</span>
+                </div>
+                <p class="text-sm text-gray-600">
+                  "இந்தியாவின் அறிவியல் வரலாறு என்ன?"
+                </p>
+              </div>
+              <div class="bg-white rounded-lg p-4 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                  <span class="text-2xl">🗣️</span>
+                  <span class="font-semibold">Bengali</span>
+                </div>
+                <p class="text-sm text-gray-600">
+                  "বাংলার সাংস্কৃতিক ঐতিহ্য সম্পর্কে জানান"
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <h3 class="text-3xl font-bold text-gray-800 mb-6">
+              🌐 Language-Agnostic Access
+            </h3>
+            <div class="space-y-4">
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">
+                    22+ Official Languages
+                  </h4>
+                  <p class="text-gray-600">
+                    Communicate in any Indian language, get responses in the
+                    same language
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">
+                    Voice & Text Support
+                  </h4>
+                  <p class="text-gray-600">
+                    Speak or type - the system understands both
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-4">
+                <div
+                  class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <span class="text-green-600 font-bold">✓</span>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-800">Cultural Context</h4>
+                  <p class="text-gray-600">
+                    Understands regional nuances and cultural references
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section
+      id="impact"
+      class="py-20 bg-gradient-to-r from-green-50 to-blue-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">
+            Transforming India's Future
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            More than storage - it's India's memory, speaking every language,
+            for every citizen
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl text-white"
+            >
+              👥
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">1.4B+</h3>
+            <p class="text-gray-600">Citizens Empowered</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-green-600 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl text-white"
+            >
+              🗣️
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">22+</h3>
+            <p class="text-gray-600">Languages Supported</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl text-white"
+            >
+              📚
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">∞</h3>
+            <p class="text-gray-600">Knowledge Preserved</p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl text-white"
+            >
+              🏛️
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">100%</h3>
+            <p class="text-gray-600">Heritage Protected</p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <div class="text-4xl mb-4">⚖️</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Safeguarding Rights
+            </h3>
+            <p class="text-gray-600">
+              Citizens can instantly access legal precedents, government
+              records, and their rights in their native language
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <div class="text-4xl mb-4">🏛️</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Preserving Culture
+            </h3>
+            <p class="text-gray-600">
+              Ancient texts, folk traditions, and cultural practices digitally
+              preserved for future generations
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <div class="text-4xl mb-4">🔬</div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              Advancing Research
+            </h3>
+            <p class="text-gray-600">
+              Researchers can access decades of scientific data, accelerating
+              innovation and discovery
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-800 mb-6">Experience NMI</h2>
+          <p class="text-xl text-gray-600">
+            Try asking questions in your preferred language
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          <div
+            class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8"
+          >
+            <div class="flex items-center space-x-4 mb-6">
+              <div
+                class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
+              >
+                <span class="text-2xl">🧠</span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold">NMI Assistant</h3>
+                <p class="text-blue-100">
+                  Ask me anything about India's knowledge and heritage
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-4 mb-6">
+              <div class="bg-white/10 rounded-lg p-4">
+                <p class="text-sm text-blue-100 mb-2">User asked in Hindi:</p>
+                <p class="mb-3">
+                  "भारत के संविधान निर्माताओं के बारे में बताएं"
+                </p>
+                <div class="bg-white/20 rounded-lg p-3">
+                  <p class="text-sm">
+                    भारत के संविधान के मुख्य निर्माता डॉ. बी.आर. अम्बेडकर थे।
+                    संविधान सभा में 299 सदस्य थे जिन्होंने 2 साल 11 महीने 18 दिन
+                    में इस महान दस्तावेज को तैयार किया...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <button
+                class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm transition-colors"
+                onclick="askQuestion('भारत का इतिहास')"
+              >
+                भारत का इतिहास
+              </button>
+              <button
+                class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm transition-colors"
+                onclick="askQuestion('তামিল সাহিত্য')"
+              >
+                বাংলা সাহিত্য
+              </button>
+              <button
+                class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm transition-colors"
+                onclick="askQuestion('தமிழ் கலை')"
+              >
+                தமிழ் கலை
+              </button>
+              <button
+                class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm transition-colors"
+                onclick="askQuestion('Scientific Research')"
+              >
+                Scientific Research
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6">
+            <div class="flex space-x-4">
+              <input
+                type="text"
+                placeholder="Ask your question in any language..."
+                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                id="questionInput"
+              />
+              <button
+                class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                onclick="submitQuestion()"
+              >
+                Ask NMI
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="text-sm text-gray-500">Try languages:</span>
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs"
+                >हिंदी</span
+              >
+              <span
+                class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs"
+                >বাংলা</span
+              >
+              <span
+                class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs"
+                >தமிழ்</span
+              >
+              <span
+                class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs"
+                >తెలుగు</span
+              >
+              <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs"
+                >ગુજરાતી</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 gradient-bg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold text-white mb-6">
+          Join India's Digital Memory Revolution
+        </h2>
+        <p class="text-xl text-blue-400 mb-8 max-w-3xl mx-auto">
+          Be part of preserving and accessing India's vast knowledge heritage
+          for generations to come
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg shadow hover:bg-gray-50 transition"
+          >
+            Start Exploring
+          </button>
+          <button
+            class="px-6 py-3 bg-purple-600 text-white font-medium rounded-lg shadow hover:bg-purple-700 transition"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <div
+                class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white font-bold text-lg">🧠</span>
+              </div>
+              <span class="text-xl font-bold">NMI</span>
+            </div>
+            <p class="text-gray-400">
+              India's National Memory Infrastructure - Preserving knowledge for
+              generations
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Platform</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >API Access</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Documentation</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Research Papers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Case Studies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Support</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Partnership</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Feedback</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>
+            &copy; 2024 National Memory Infrastructure. Empowering India through
+            preserved knowledge.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
