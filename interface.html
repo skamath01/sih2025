@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chatbot Interface</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>NMI Chatbot Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       body {
         margin: 0;
@@ -16,28 +22,36 @@
         min-height: 100vh;
       }
 
-      .chat-container {
-
-        min-width: 40vw;
-        min-height: 66vh;
-        background: #ffffff;
+      /* --- LAYOUT --- */
+      .main-container {
+        display: flex;
+        width: 90vw;
+        height: 80vh;
         border-radius: 15px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         overflow: hidden;
+        background: white;
+      }
+
+      /* --- CHAT PANEL --- */
+      .chat-container {
+        width: 40%;
         display: flex;
         flex-direction: column;
+        border-right: 1px solid #ddd;
       }
 
       .chat-header {
         background: linear-gradient(90deg, #4f46e5, #8b5cf6);
         color: #fff;
-        padding: 20px;
+        padding: 18px;
         font-weight: bold;
         font-size: 18px;
         display: flex;
         align-items: center;
         gap: 10px;
       }
+
       .chat-body {
         flex: 1;
         padding: 15px;
@@ -71,7 +85,7 @@
       .chat-footer {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         padding: 14px 16px;
         background: #fff;
         border-top: 1px solid #ddd;
@@ -97,45 +111,161 @@
         border: none;
         font-size: 15px;
         cursor: pointer;
-        margin-left: 2px;
         transition: background 0.2s;
       }
 
       .ask-btn:hover {
         background: #4338ca;
       }
+
+      /* --- RESPONSE PANEL --- */
+      /* Response panel links styling */
+      .response-panel {
+        background: #f9fafb;
+        padding: 10px;
+        border-left: 1px solid #ddd;
+        width: 60%;
+        min-width: 300px;
+        max-height: 66vh;
+        overflow-y: auto;
+      }
+
+      .response-header {
+        font-weight: bold;
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+      }
+
+      .bot-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .bot-links a {
+        display: block;
+        padding: 10px 12px;
+        background: #4f46e5;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.2s, transform 0.1s;
+      }
+
+      .bot-links a:hover {
+        background: #4338ca;
+        transform: translateY(-2px);
+      }
+
+      .title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #1e3a8a;
+      }
     </style>
   </head>
   <body>
-    <div class="chat-container">
-      <div class="chat-header">
-        <span class="text-white font-bold text-lg Assistant">🧠</span>
-        NMI Assistant
-      </div>
+    <div class="main-container">
+      <!-- LEFT: Chat Section -->
+      <div class="chat-container">
+        <div class="chat-header"><span>🧠</span> NMI Assistant</div>
 
-      <div class="chat-body" id="chatBody">
-        <div class="bot-msg message">
-          Ask me anything about India's knowledge and heritage
+        <div class="chat-body" id="chatBody">
+          <div class="bot-msg message">
+            Ask me anything about India's knowledge and heritage.
+          </div>
+        </div>
+
+        <div class="chat-footer">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Ask your question..."
+          />
+          <button class="ask-btn" onclick="sendMessage()">Ask</button>
         </div>
       </div>
 
-      <div class="chat-footer">
-  <i class="fa-solid fa-paperclip"></i>
-  <input 
-    type="text"
-    id="userInput"
-    placeholder="Ask your question in any language..."
-  />
-  <i class="fa-solid fa-microphone"></i>
-  <button class="ask-btn">Ask NMI</button>
-  <input type="file" id="fileInput" style="display: none;" />
-</div>
-
+      <!-- RIGHT: Response Section -->
+      <div class="response-panel">
+        <div class="response-header">Results</div>
+        <div class="response-content" id="responseContent">
+          <p class="typing">Your detailed responses will appear here.</p>
+        </div>
+      </div>
+    </div>
 
     <script>
+      function generateDemoResponse(query) {
+        query = query.toLowerCase();
+
+        if (query.includes("medical") || query.includes("report")) {
+          return {
+            title: "Medical Research Archives (2011)",
+            html: `
+          <div class="bot-links">
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5353381/" target="_blank">🩺 Ministry of Health & Family Welfare – Govt. of India</a>
+            <a href="https://www.worldwidejournals.com/indian-journal-of-applied-research-(IJAR)/article/fragments-of-the-forgotten-a-case-report-of-dissociative-amnesia-from-india/NDI1MTg=/" target="_blank">📘 Indian Journal applied research – Research Publications</a>
+            <a href="https://data.gov.in/" target="_blank">🏛️ National Health Data – Open Government Portal</a>
+          </div>
+          <p class="description">🩺 Ministry of Health & Family Welfare – Govt. of India: Forensic investigation into a death: post-traumatic amnesia in a worker with a work-related head injury sustained in a coal-fired thermal power plant in India</p>
+        `,
+          };
+        }
+
+        if (query.includes("heritage") || query.includes("culture")) {
+          return {
+            title: "Cultural Heritage Documents",
+            html: `
+          <div class="bot-links">
+            <a href="https://indiaculture.gov.in/" target="_blank">🕉️ Ministry of Culture – Govt. of India</a>
+            <a href="https://nationalarchives.nic.in/" target="_blank">📜 National Archives of India</a>
+            <a href="https://www.tnarch.gov.in/manuscript" target="_blank">🏰 Archaeological Survey of India</a>
+          </div>
+          <p class="description">Government Oriental Manuscripts Library and Research Centre (GOML & RC) is a veritable treasure house of ancient knowledge housing 50,180 palm leaf manuscripts, 22134 paper manuscripts and 26,556 rare printed books.
+Started in 1869, this library is the repository of rare manuscripts and books in various languages such as Tamil, Sanskrit, Telugu, Kannada, Marathi, Pali, Urdu, Arabic, Persian, Sinhalese etc.,covering subjects such as Mathematics, Astronomy, Siddha, Ayurveda, Unani, Veda, Agama, Architecture, Music, Sculpture, Fine Arts, History, Grammar, Literature and many others.
+Scholars from all over India and abroad visit the GOML & RC to access these rare manuscripts and books. It is an excellent resource centre for doing research leading to Ph.D. The splendid Library with its treasure of largest collections in the world of rare, original palm leaf manuscripts numbering more than 73,000/- has brought out 454 publications in South Indian languages, Sanskrit, Urdu, Arabic, Persian and Marathi languages. It is a marvelous Research Centre for scholars from different countries – both oriental and occidental.</p>
+        `,
+          };
+        }
+
+        if (query.includes("ai") || query.includes("data")) {
+          return {
+            title: "AI & Data Initiatives in India",
+            html: `
+          <div class="bot-links">
+            <a href="https://indiaai.gov.in/" target="_blank">🤖 IndiaAI – National AI Portal</a>
+            <a href="https://ndap.niti.gov.in/" target="_blank">📊 NITI Aayog Data Analytics Platform</a>
+            <a href="https://data.gov.in/" target="_blank">🧩 Open Government Data Platform</a>
+          </div>
+          <p class="description">Access national AI initiatives, data analytics platforms, and open government datasets.</p>
+        `,
+          };
+        }
+
+        return {
+          title: "Cultural Heritage Documents",
+          html: `
+        <div class="bot-links">
+            <a href="https://indiaculture.gov.in/" target="_blank">🕉️ Ministry of Culture – Govt. of India</a>
+            <a href="https://nationalarchives.nic.in/" target="_blank">📜 National Archives of India</a>
+            <a href="https://www.tnarch.gov.in/manuscript" target="_blank">🏰 Archaeological Survey of India</a>
+          </div>
+          <p class="description">🏰 Archaeological Survey of India :Government Oriental Manuscripts Library and Research Centre (GOML & RC) is a veritable treasure house of ancient knowledge housing 50,180 palm leaf manuscripts, 22134 paper manuscripts and 26,556 rare printed books.
+Started in 1869, this library is the repository of rare manuscripts and books in various languages such as Tamil, Sanskrit, Telugu, Kannada, Marathi, Pali, Urdu, Arabic, Persian, Sinhalese etc.,covering subjects such as Mathematics, Astronomy, Siddha, Ayurveda, Unani, Veda, Agama, Architecture, Music, Sculpture, Fine Arts, History, Grammar, Literature and many others.
+Scholars from all over India and abroad visit the GOML & RC to access these rare manuscripts and books. It is an excellent resource centre for doing research leading to Ph.D. The splendid Library with its treasure of largest collections in the world of rare, original palm leaf manuscripts numbering more than 73,000/- has brought out 454 publications in South Indian languages, Sanskrit, Urdu, Arabic, Persian and Marathi languages. It is a marvelous Research Centre for scholars from different countries – both oriental and occidental.</p>
+      `,
+        };
+      }
+
       function sendMessage() {
         const input = document.getElementById("userInput");
         const chatBody = document.getElementById("chatBody");
+        const responseContent = document.getElementById("responseContent");
         const userText = input.value.trim();
         if (userText === "") return;
 
@@ -145,18 +275,35 @@
         userMsg.innerText = userText;
         chatBody.appendChild(userMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
-
         input.value = "";
 
-        // Simulate bot reply
+        // Typing indicator
+        const typing = document.createElement("div");
+        typing.className = "message bot-msg typing";
+        typing.innerText = "NMI Assistant is thinking...";
+        chatBody.appendChild(typing);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
         setTimeout(() => {
+          typing.remove();
+
+          const botResponse = generateDemoResponse(userText);
+
+          // Add to chat
           const botMsg = document.createElement("div");
           botMsg.className = "message bot-msg";
-          botMsg.innerText = "Demo response for : " + userText;
+          botMsg.innerHTML = botResponse.title;
           chatBody.appendChild(botMsg);
           chatBody.scrollTop = chatBody.scrollHeight;
-        }, 800);
+
+          // Update right panel with links + description
+          responseContent.innerHTML = `
+        <div class="title">${botResponse.title}</div>
+        ${botResponse.html}
+      `;
+        }, 900);
       }
+
       document
         .getElementById("userInput")
         .addEventListener("keypress", function (e) {
